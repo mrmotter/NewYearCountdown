@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NewYearCountdown"
+             x:Class="NewYearCountdown.MainPage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:DoubleToIntConverter x:Key="doubleToInt" />
+            
+            <Style x:Key="ClockText" TargetType="Label">
+                <Setter Property="FontSize" Value="150"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="{Binding Color}"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+            </Style>
+
+            <Style x:Key="LabelText" TargetType="Label">
+                <Setter Property="FontSize" Value="75"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="{Binding Color}"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+            </Style>
+
+            <Style x:Key="FinalText" TargetType="Label">
+                <Setter Property="FontSize" Value="130"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="{Binding Color}"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+            </Style>
+
+            <Style x:Key="BackgroundStyle" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="Black"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid x:Name="bg" Style="{StaticResource BackgroundStyle}">
+        <Slider x:Name="RedSlider" Value="{Binding Red}" IsVisible="False"  />
+        <Slider x:Name="GreenSlider" Value="{Binding Green}" IsVisible="False" />
+        <Slider x:Name="BlueSlider" Value="{Binding Blue}" IsVisible="False" />
+
+        <Label Text="{Binding Days, StringFormat='{0:N0}'}"
+            Style="{StaticResource ClockText}" Grid.Column="0" Grid.Row="0"/>
+
+        <Label Text="days" Style="{StaticResource LabelText}" Grid.Column="0" Grid.Row="1"/>
+
+        <Label Text="{Binding Hours, StringFormat='{0:N0}'}"
+               Style="{StaticResource ClockText}" Grid.Column="1" Grid.Row="0" />
+
+        <Label Text="hours" Style="{StaticResource LabelText}" Grid.Column="1" Grid.Row="1"/>
+        
+        <Label Text="{Binding Minutes, StringFormat='{0:N0}'}"
+               Style="{StaticResource ClockText}" Grid.Column="2" Grid.Row="0" />
+
+        <Label Text="minutes" Style="{StaticResource LabelText}" Grid.Column="2" Grid.Row="1"/>
+
+        <Label Text="{Binding Seconds, StringFormat='{0:N0}'}"
+               Style="{StaticResource ClockText}" Grid.Column="3" Grid.Row="0" />
+
+        <Label Text="seconds" Style="{StaticResource LabelText}" Grid.Column="3" Grid.Row="1"/>
+
+        <Label Text="UNTIL THE NEW YEAR" Style="{StaticResource FinalText}"
+               Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" />
+    </Grid>
+    
+</ContentPage>
